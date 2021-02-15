@@ -4,8 +4,10 @@
 isHead=1
 heads=0
 tails=0
+diff1=0
+diff2=0
 
-while [ $heads -lt 21 -a $tails -lt 21 ]
+while [ $diff1 -lt 2 -a $diff2 -lt 2 -o $heads -lt 21 -a $tails -lt 21 ]
 do
 	coin=$((RANDOM%2))
 	if [ $coin -eq $isHead ]
@@ -14,9 +16,11 @@ do
 	else
 		((tails++))
 	fi
+	diff1=$(($heads-$tails))
+	diff2=$(($tails-$heads))
 done
 
-if [ $heads -eq 21 ]
+if [ $heads -gt $tails ]
 	then
 		echo "Heads have won"
 else
