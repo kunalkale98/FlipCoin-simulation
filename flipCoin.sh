@@ -2,11 +2,10 @@
 #Welcome to Flip Coin Simulation
 
 isHead=1
-n=0
 heads=0
 tails=0
 
-while [ $n -le 21 ]
+while [ $heads -lt 21 -a $tails -lt 21 ]
 do
 	coin=$((RANDOM%2))
 	if [ $coin -eq $isHead ]
@@ -15,8 +14,12 @@ do
 	else
 		((tails++))
 	fi
-	((n++))
 done
 
-echo "Heads won "$heads" times"
-echo "Tails won "$tails" times"
+if [ $heads -eq 21 ]
+	then
+		echo "Heads have won"
+else
+	echo "Tails have won"
+fi
+
